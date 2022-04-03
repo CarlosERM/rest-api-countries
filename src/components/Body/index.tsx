@@ -1,8 +1,7 @@
-import React, { Children } from "react";
-import { ContainerBody } from "./style";
+import { ContainerBody } from './style';
 
-const Body = ({ children }: React.ReactNode) => {
-  return <ContainerBody> {...children}</ContainerBody>;
+const Body = () => {
+  return <ContainerBody>oi</ContainerBody>;
 };
 
 export default Body;

@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderBody = styled.div`
-  color: ${({ theme }) => theme.color.text};
+  color: ${({ theme }) => {
+    return theme.color.text;
+  }};
 `;

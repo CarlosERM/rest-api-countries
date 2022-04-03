@@ -1,4 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const ContainerBody = styled.div``;
+const TemplateBody = styled.div``;
+export default TemplateBody;
