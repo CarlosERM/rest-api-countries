@@ -1,4 +1,12 @@
 import React from 'react';
 
-const Template = () => <div>HHAHAHAHAH</div>;
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+const Template = () => {
+  return (
+    <BrowserRouter>
+      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
+    </BrowserRouter>
+  );
+};
 export default Template;

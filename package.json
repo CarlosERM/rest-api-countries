@@ -13,6 +13,7 @@
     "@types/styled-components": "^5.1.24",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-router-dom": "6",
     "react-scripts": "5.0.0",
     "remove": "^0.1.5",
     "styled-components": "^5.3.5",
