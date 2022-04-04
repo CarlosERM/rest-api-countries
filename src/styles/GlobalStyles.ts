@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -31,7 +32,9 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-family: 'Nunito Sans', sans-serif;
         box-sizing: border-box;
-        background-color: ${({ theme }) => theme.color.background};
+        background-color: ${({ theme }) => {
+          return theme.color.background;
+        }};
     }
 
     *, *::after, *::before {
