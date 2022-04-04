@@ -1,8 +1,13 @@
 import React from 'react';
-import { HeaderBody } from './style';
+import { HeaderBody, HeaderTitle, HeaderToggle } from './style';
 
 const Header = () => {
-  return <HeaderBody>Where in the world?</HeaderBody>;
+  return (
+    <HeaderBody>
+      <HeaderTitle>Where in thes world?</HeaderTitle>
+      <HeaderToggle type="checkbox" />
+    </HeaderBody>
+  );
 };
 
 export default Header;

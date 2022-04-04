@@ -5,3 +5,9 @@ export const HeaderBody = styled.div`
     return theme.color.text;
   }};
 `;
+
+export const HeaderTitle = styled.h1`
+  font-weight: bold;
+`;
+
+export const HeaderToggle = styled.input``;
