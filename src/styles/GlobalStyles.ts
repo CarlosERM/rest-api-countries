@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
+        font-family: 'Nunito Sans', sans-serif; 
         vertical-align: baseline;
     }
 
@@ -30,11 +30,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-family: 'Nunito Sans', sans-serif;
         box-sizing: border-box;
         background-color: ${({ theme }) => {
           return theme.color.background;
         }};
+        transition: 0.5s background-color linear;
     }
 
     *, *::after, *::before {
@@ -42,6 +42,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        color: ${({ theme }) => {
+          return theme.color.text;
+        }};
         line-height: 1;
     }
 

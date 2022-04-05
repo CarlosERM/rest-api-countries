@@ -1,5 +1,11 @@
 import React from 'react';
+import Body from '../components/Body';
+import Input from '../components/Input';
 
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <Body>
+      <Input />
+    </Body>
+  );
 };
