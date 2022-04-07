@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderBody = styled.div`
+export const HeaderBody = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 2.5rem 1.25rem;
