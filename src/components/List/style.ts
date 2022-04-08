@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ListBody = styled.ul`
+  margin-top: 2.5rem;
   padding: 0rem 3.125rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -21,5 +22,17 @@ export const InfoItem = styled.div`
   padding: 30px;
 `;
 export const InfoTitle = styled.h2`
+  font-weight: bold;
+  margin-bottom: 1.875rem;
+  font-size: 1.25rem;
+`;
+
+export const InfoList = styled.ul``;
+
+export const InfoListItem = styled.li`
+  margin-bottom: 0.9375rem;
+`;
+export const InfoCategory = styled.p``;
+export const InfoCategoryInfo = styled.span`
   font-weight: bold;
 `;

@@ -1,25 +1,18 @@
-import { IoIosArrowDown } from 'react-icons/io';
 import React from 'react';
-import { BodyFilter, BodyFilterWrapper } from './style';
+import { FilterBody, Options, OptionsItem } from './style';
 
 const Filter = () => {
   return (
-    <BodyFilterWrapper>
-      <BodyFilter>
-        <option>Bruno Fagner</option>
-        <option>Bruno Batista</option>
-        <option>Alexandre</option>
-        <option>Carlos Eduardo</option>
-      </BodyFilter>
-      <IoIosArrowDown
-        style={{
-          position: 'absolute',
-          top: '50%',
-          right: '.9375rem',
-          transform: 'translateY(-50%)',
-        }}
-      />
-    </BodyFilterWrapper>
+    <>
+      <FilterBody>Filter by region</FilterBody>
+      <Options>
+        <OptionsItem>Africa</OptionsItem>
+        <OptionsItem>America</OptionsItem>
+        <OptionsItem>Asia</OptionsItem>
+        <OptionsItem>Europe</OptionsItem>
+        <OptionsItem>Oceania</OptionsItem>
+      </Options>
+    </>
   );
 };
 
