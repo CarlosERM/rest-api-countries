@@ -10,7 +10,6 @@ export const FilterBody = styled.div`
   transition: 0.5s background-color linear;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   border-radius: 0.3125rem;
-  width: 58.3%;
   cursor: pointer;
 `;
 
@@ -23,7 +22,7 @@ export const Options = styled.ul`
   }};
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   border-radius: 0.3125rem;
-  width: 56.5%;
+  width: 100%;
 `;
 export const OptionsItem = styled.li`
   background-color: ${({ theme }) => {
@@ -36,8 +35,12 @@ export const OptionsItem = styled.li`
   }
 
   &:hover {
-    opacity: 0.8;
-    font-size: 18px;
+    font-size: 1.125rem;
     transition: 0.1s font-size linear;
   }
+`;
+
+export const WrapperFilter = styled.div`
+  width: 53.5%;
+  position: relative;
 `;
