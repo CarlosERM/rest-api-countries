@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
+import { AxiosResponse } from 'axios';
 import React, { useState } from 'react';
+import { getRequest } from '../api';
 
 interface ContextProviderProp {
   children: React.ReactNode;
@@ -14,6 +16,13 @@ const myContext = React.createContext({} as ContextProps);
 
 export const ContextProvider = ({ children }: ContextProviderProp) => {
   const [toggle, setToggle] = useState(false);
+  // const [countries, setCountries] = useState();
+
+  // function getCountries() {
+  //   const teste: AxiosResponse<any, any> = getRequest('all');
+  //   console.log(teste);
+  // }
+  // getCountries();
   function handleToggle() {
     setToggle(!toggle);
   }

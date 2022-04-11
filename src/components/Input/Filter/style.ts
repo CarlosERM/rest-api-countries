@@ -2,7 +2,9 @@ import styled from 'styled-components';
 /* eslint-disable @typescript-eslint/indent */
 
 export const FilterBody = styled.div`
-  padding: 1.25rem 1.875rem 1.25rem 1.875rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem 1.25rem 1.875rem;
   background-color: ${({ theme }) => {
     return theme.color.input;
   }};

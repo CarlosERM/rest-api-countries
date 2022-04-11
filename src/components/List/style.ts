@@ -7,12 +7,13 @@ export const ListBody = styled.ul`
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
 `;
 
-export const ListItem = styled.ul`
+export const ListItem = styled.li`
   border-radius: 10px;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   background-color: ${({ theme }) => {
     return theme.color.elements;
   }};
+  margin-bottom: 3.125rem;
 `;
 
 export const ImageItem = styled.img`

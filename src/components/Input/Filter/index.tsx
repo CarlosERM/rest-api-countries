@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
 import { FilterBody, Options, OptionsItem, WrapperFilter } from './style';
 
 const Filter = () => {
@@ -11,13 +12,19 @@ const Filter = () => {
 
   const handleClickOption = useCallback(
     (e: EventTarget & HTMLLIElement) => {
+      setShow(!show);
+
       setOption(e.dataset.filter);
     },
-    [option],
+    [option, show],
   );
   return (
     <WrapperFilter>
-      <FilterBody onClick={handleClick}>{option || 'Filter by region'}</FilterBody>
+      <FilterBody onClick={handleClick}>
+        {option || 'Filter by region'}
+
+        <IoIosArrowDown />
+      </FilterBody>
       {show && (
         <Options>
           <OptionsItem
