@@ -19,9 +19,10 @@ export const BodyInput = styled.input`
   transition: 0.5s background-color linear;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   border-radius: 0.3125rem;
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   min-width: 100%;
-
+  font-size: 0.9375rem;
+  font-family: inherit;
   &::placeholder {
     color: ${({ theme }) => {
       return theme.color.inputText;

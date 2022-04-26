@@ -1,33 +1,27 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import { AxiosResponse } from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getRequest } from '../api';
-
-interface ContextProviderProp {
-  children: React.ReactNode;
-}
-
-interface ContextProps {
-  toggle: boolean;
-  handleToggle: () => void;
-}
+import { ContextProps, ContextProviderProp, CountryType } from '../types/types';
 
 const myContext = React.createContext({} as ContextProps);
-
 export const ContextProvider = ({ children }: ContextProviderProp) => {
   const [toggle, setToggle] = useState(false);
-  // const [countries, setCountries] = useState();
+  const [countries, setCountries] = useState<CountryType[] | null>();
 
-  // function getCountries() {
-  //   const teste: AxiosResponse<any, any> = getRequest('all');
-  //   console.log(teste);
-  // }
-  // getCountries();
+  async function getCountries() {
+    const response = await getRequest('all');
+    setCountries(response);
+  }
+
+  useEffect(() => {
+    getCountries();
+  }, []);
+
   function handleToggle() {
     setToggle(!toggle);
   }
-
-  return <myContext.Provider value={{ toggle, handleToggle }}>{children}</myContext.Provider>;
+  return (
+    <myContext.Provider value={{ toggle, handleToggle, countries }}>{children}</myContext.Provider>
+  );
 };
 
 export function useMyContext() {

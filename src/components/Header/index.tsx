@@ -14,7 +14,7 @@ const Header = () => {
         <Toggle onClick={handleToggle}>
           {toggle ? <BsMoonFill style={{ color: 'white' }} /> : <BsMoon />}
         </Toggle>
-        <p>Dark Mode</p>
+        <p style={{ fontSize: '15px' }}>Dark Mode</p>
       </HeaderToggle>
     </HeaderBody>
   );

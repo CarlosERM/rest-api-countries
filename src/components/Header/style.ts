@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderBody = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 2.5rem 1.25rem;
+  padding: 2.7rem 1.25rem 2.5rem;
   box-shadow: 0px -30px 45px 0px black;
   background-color: ${({ theme }) => {
     return theme.color.elements;
@@ -13,11 +13,12 @@ export const HeaderBody = styled.header`
 
 export const HeaderTitle = styled.h1`
   font-weight: 800;
+  font-size: 1.0625rem;
 `;
 
 export const HeaderToggle = styled.div`
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   font-weight: 600;
   align-items: center;
 `;

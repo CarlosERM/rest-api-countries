@@ -13,12 +13,13 @@ export const FilterBody = styled.div`
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   border-radius: 0.3125rem;
   cursor: pointer;
+  font-size: 0.9375rem;
 `;
 
 export const Options = styled.ul`
   position: absolute;
   margin-top: 0.3125rem;
-  padding: 1.875rem 1.875rem 25px 1.875rem;
+  padding: 1.5rem 1.875rem 25px 1.875rem;
   background-color: ${({ theme }) => {
     return theme.color.input;
   }};
@@ -30,7 +31,7 @@ export const OptionsItem = styled.li`
   background-color: ${({ theme }) => {
     return theme.color.input;
   }};
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.9rem;
   cursor: pointer;
   &:last-child {
     margin-bottom: 0rem;
@@ -43,6 +44,6 @@ export const OptionsItem = styled.li`
 `;
 
 export const WrapperFilter = styled.div`
-  width: 53.5%;
+  width: 58.5%;
   position: relative;
 `;

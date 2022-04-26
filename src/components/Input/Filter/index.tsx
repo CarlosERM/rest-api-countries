@@ -21,7 +21,7 @@ const Filter = () => {
   return (
     <WrapperFilter>
       <FilterBody onClick={handleClick}>
-        {option || 'Filter by region'}
+        {option || 'Filter by Region'}
 
         <IoIosArrowDown />
       </FilterBody>

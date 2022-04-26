@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-// export interface PropsApi {
-//   config: {};
-//   data: [];
-//   headers: {};
-//   status: number;
-//   statusText: string;
-// }
 const axiosClient = axios.create({
   baseURL: 'https://restcountries.com/v3.1',
   timeout: 2000,
@@ -17,7 +10,7 @@ axiosClient.defaults.withCredentials = true;
 
 export function getRequest(URL: string) {
   return axiosClient.get(`/${URL}`).then((response) => {
-    return response;
+    return response.data;
   });
 }
 

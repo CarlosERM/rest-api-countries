@@ -45,6 +45,7 @@
       }
     ],
     "arrow-body-style": ["error", "always"],
-    "indent": 0
+    "indent": 0,
+    "react/jsx-no-constructed-context-values": "off"
   }
 }

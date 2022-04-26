@@ -7,7 +7,15 @@ const Input = () => {
   return (
     <BoxInput>
       <BodyInput type="text" placeholder="Search for a country..." />
-      <AiOutlineSearch style={{ position: 'absolute', top: '1.25rem', left: '3.75rem' }} />
+      <AiOutlineSearch
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '2.3rem',
+          fontSize: '25px',
+          transform: 'translateY(-150%)',
+        }}
+      />
     </BoxInput>
   );
 };
