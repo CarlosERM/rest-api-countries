@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getRequest } from '../api';
 import { ContextProps, ContextProviderProp, CountryType } from '../types/types';
 
@@ -7,9 +7,13 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
   const [toggle, setToggle] = useState(false);
   const [countries, setCountries] = useState<CountryType[] | null>();
 
+  const handleSetCountries = useCallback((data) => {
+    setCountries(data);
+  }, []);
+
   async function getCountries() {
     const response = await getRequest('all');
-    setCountries(response);
+    handleSetCountries(response);
   }
 
   useEffect(() => {
