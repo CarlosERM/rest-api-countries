@@ -4,7 +4,7 @@ export const ListBody = styled.ul`
   margin-top: 2.5rem;
   padding: 0rem 3.125rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
   column-gap: 5.23vw;
 
   @media (min-width: 48.5625rem) {
@@ -17,47 +17,53 @@ export const ListBody = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  border-radius: 0.625rem;
-  box-shadow: 0px 0px 15px -4px rgb(0 0 0 / 41%);
+  border-radius: 0.25rem;
+  box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   background-color: ${({ theme }) => {
     return theme.color.elements;
   }};
   margin-bottom: 50px;
-  transition: all 0.1s linear;
-
+  transition: transform 0.1s linear, background-color 0.5s linear;
+  color: inherit;
   &:hover {
     transform: scale(1.05);
     cursor: pointer;
     transition: all 0.1s linear;
-    box-shadow: 0px 0px 20px -2px rgb(0 0 0 / 41%);
+    box-shadow: 0rem 0rem 1.25rem -0.125rem rgb(0 0 0 / 41%);
   }
 `;
 
 export const ImageItem = styled.img`
-  border-radius: 0.625rem 0.625rem 0rem 0rem;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
   width: 100%;
-  height: 50%;
-  @media (min-width: 800px) {
-    height: 47.61;
+  height: 200px;
+  @media (min-width: 50rem) {
+    height: 47.61%;
   }
 `;
 export const InfoItem = styled.div`
   padding: 1.875rem;
 `;
 export const InfoTitle = styled.h2`
-  font-weight: bold;
-  margin-bottom: 30px;
-  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 1.875rem;
+  font-size: 1.4375rem;
 `;
 
-export const InfoList = styled.ul``;
+export const InfoList = styled.ul`
+  margin-bottom: 1.625rem;
+`;
 
 export const InfoListItem = styled.li`
-  margin-bottom: 15px;
+  margin-bottom: 0.875rem;
 `;
-export const InfoCategory = styled.p``;
+export const InfoCategory = styled.p`
+  font-weight: 300;
+  font-size: 16px;
+`;
 export const InfoCategoryInfo = styled.span`
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1.0313rem;
 `;
 
 export const NavCountries = styled.ul`
@@ -66,7 +72,7 @@ export const NavCountries = styled.ul`
 `;
 export const NavCountriesItem = styled.li`
   & + & {
-    margin-left: 16px;
+    margin-left: 1rem;
   }
   cursor: pointer;
 
