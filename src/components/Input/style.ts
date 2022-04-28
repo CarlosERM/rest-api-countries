@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import styled from 'styled-components';
 
-export const BoxInput = styled.div`
+export const BoxInput = styled.form`
   position: relative;
   color: ${({ theme }) => {
     return theme.color.inputText;

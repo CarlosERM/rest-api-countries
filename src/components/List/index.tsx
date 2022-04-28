@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMyContext } from '../../context';
+import Loader from '../Loader';
 
 import {
   ImageItem,
@@ -11,47 +12,72 @@ import {
   InfoTitle,
   ListBody,
   ListItem,
+  NavCountries,
+  NavCountriesItem,
 } from './style';
 
 const List = () => {
-  const { countries } = useMyContext();
+  const { countries, inicio, setInicio, fim, setFim, loader } = useMyContext();
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const value: number = +e.currentTarget.innerHTML;
+    if (value !== 1) setInicio((value - 1) * 25 + 1);
+    else setInicio((value - 1) * 25);
+    setFim(value * 25);
+  };
 
   return (
-    <ListBody>
-      {countries?.map((country, index) => {
-        if (index < 25) {
+    <>
+      <ListBody>
+        {loader ? (
+          <Loader />
+        ) : (
+          countries?.map((country, index) => {
+            if (index >= inicio - 1 && index < fim) {
+              return (
+                <ListItem key={country.population}>
+                  <ImageItem src={country.flags.svg} />
+                  <InfoItem>
+                    <InfoTitle>{country.name.common}</InfoTitle>
+                    <InfoList>
+                      <InfoListItem>
+                        <InfoCategory>
+                          <InfoCategoryInfo>Population:</InfoCategoryInfo>
+                          {` ${country.population}`}
+                        </InfoCategory>
+                      </InfoListItem>
+                      <InfoListItem>
+                        <InfoCategory>
+                          <InfoCategoryInfo>Region:</InfoCategoryInfo>
+                          {` ${country.continents}`}
+                        </InfoCategory>
+                      </InfoListItem>
+                      <InfoListItem>
+                        <InfoCategory>
+                          <InfoCategoryInfo>Capital:</InfoCategoryInfo>
+                          {` ${country.capital}`}
+                        </InfoCategory>
+                      </InfoListItem>
+                    </InfoList>
+                  </InfoItem>
+                </ListItem>
+              );
+            }
+            return null;
+          })
+        )}
+      </ListBody>
+      <NavCountries>
+        {numbers.map((numb) => {
           return (
-            <ListItem>
-              <ImageItem src={country.flags.svg} width="100%" />
-              <InfoItem>
-                <InfoTitle>{country.name.common}</InfoTitle>
-                <InfoList>
-                  <InfoListItem>
-                    <InfoCategory>
-                      <InfoCategoryInfo>Population:</InfoCategoryInfo>
-                      {` ${country.population}`}
-                    </InfoCategory>
-                  </InfoListItem>
-                  <InfoListItem>
-                    <InfoCategory>
-                      <InfoCategoryInfo>Region:</InfoCategoryInfo>
-                      {` ${country.continents}`}
-                    </InfoCategory>
-                  </InfoListItem>
-                  <InfoListItem>
-                    <InfoCategory>
-                      <InfoCategoryInfo>Capital:</InfoCategoryInfo>
-                      {` ${country.capital}`}
-                    </InfoCategory>
-                  </InfoListItem>
-                </InfoList>
-              </InfoItem>
-            </ListItem>
+            <NavCountriesItem onClick={handleClick} key={numb}>
+              {numb}
+            </NavCountriesItem>
           );
-        }
-        return null;
-      })}
-    </ListBody>
+        })}
+      </NavCountries>
+    </>
   );
 };
 export default List;

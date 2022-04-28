@@ -1,3 +1,5 @@
+import { SetStateAction } from 'react';
+
 export interface ContextProviderProp {
   children: React.ReactNode;
 }
@@ -6,6 +8,13 @@ export interface ContextProps {
   toggle: boolean;
   handleToggle: () => void;
   countries: CountryType[] | null | undefined;
+  inicio: number;
+  setInicio: React.Dispatch<SetStateAction<number>>;
+  fim: number;
+  setFim: React.Dispatch<SetStateAction<number>>;
+  loader: boolean;
+  getCountryByFilter: (continent: string) => Promise<void>;
+  getCountryByName: (name: string) => Promise<void>;
 }
 
 export interface CountryType {

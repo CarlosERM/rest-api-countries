@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useMyContext } from '../../../context';
 import { FilterBody, Options, OptionsItem, WrapperFilter } from './style';
 
 const Filter = () => {
+  const [option, setOption] = useState<string | undefined>();
   const [show, setShow] = useState(false);
-  const [option, setOption] = useState<string | null>();
+  const { getCountryByFilter } = useMyContext();
 
   const handleClick = useCallback(() => {
     setShow(!show);
@@ -12,17 +14,19 @@ const Filter = () => {
 
   const handleClickOption = useCallback(
     (e: EventTarget & HTMLLIElement) => {
-      setShow(!show);
-
       setOption(e.dataset.filter);
+      setShow(!show);
+      if (option != null) getCountryByFilter(option.toLowerCase());
     },
-    [option, show],
+    [show],
   );
+
+  console.log(option);
+
   return (
     <WrapperFilter>
       <FilterBody onClick={handleClick}>
         {option || 'Filter by Region'}
-
         <IoIosArrowDown />
       </FilterBody>
       {show && (

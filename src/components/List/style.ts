@@ -18,6 +18,8 @@ export const ListItem = styled.li`
 
 export const ImageItem = styled.img`
   border-radius: 10px 10px 0px 0px;
+  max-width: 100%;
+  height: auto;
 `;
 export const InfoItem = styled.div`
   padding: 30px;
@@ -36,4 +38,20 @@ export const InfoListItem = styled.li`
 export const InfoCategory = styled.p``;
 export const InfoCategoryInfo = styled.span`
   font-weight: bold;
+`;
+
+export const NavCountries = styled.ul`
+  justify-content: center;
+  display: flex;
+`;
+export const NavCountriesItem = styled.li`
+  & + & {
+    margin-left: 1rem;
+  }
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+  }
 `;
