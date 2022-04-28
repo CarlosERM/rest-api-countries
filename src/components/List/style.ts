@@ -4,36 +4,56 @@ export const ListBody = styled.ul`
   margin-top: 2.5rem;
   padding: 0rem 3.125rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap: 5.23vw;
+
+  @media (min-width: 48.5625rem) {
+    grid-template-columns: repeat(2, minmax(11.875rem, 1fr));
+  }
+  @media (min-width: 68.75rem) {
+    grid-template-columns: repeat(4, minmax(11.875rem, 16.5625rem));
+    /* column-gap: 4.6875rem; */
+  } ;
 `;
 
 export const ListItem = styled.li`
-  border-radius: 10px;
-  box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
+  border-radius: 0.625rem;
+  box-shadow: 0px 0px 15px -4px rgb(0 0 0 / 41%);
   background-color: ${({ theme }) => {
     return theme.color.elements;
   }};
-  margin-bottom: 3.125rem;
+  margin-bottom: 50px;
+  transition: all 0.1s linear;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: all 0.1s linear;
+    box-shadow: 0px 0px 20px -2px rgb(0 0 0 / 41%);
+  }
 `;
 
 export const ImageItem = styled.img`
-  border-radius: 10px 10px 0px 0px;
-  max-width: 100%;
-  height: auto;
+  border-radius: 0.625rem 0.625rem 0rem 0rem;
+  width: 100%;
+  height: 50%;
+  @media (min-width: 800px) {
+    height: 47.61;
+  }
 `;
 export const InfoItem = styled.div`
-  padding: 30px;
+  padding: 1.875rem;
 `;
 export const InfoTitle = styled.h2`
   font-weight: bold;
-  margin-bottom: 1.875rem;
-  font-size: 1.25rem;
+  margin-bottom: 30px;
+  font-size: 20px;
 `;
 
 export const InfoList = styled.ul``;
 
 export const InfoListItem = styled.li`
-  margin-bottom: 0.9375rem;
+  margin-bottom: 15px;
 `;
 export const InfoCategory = styled.p``;
 export const InfoCategoryInfo = styled.span`
@@ -46,7 +66,7 @@ export const NavCountries = styled.ul`
 `;
 export const NavCountriesItem = styled.li`
   & + & {
-    margin-left: 1rem;
+    margin-left: 16px;
   }
   cursor: pointer;
 

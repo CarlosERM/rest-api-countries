@@ -26,7 +26,6 @@ const List = () => {
     else setInicio((value - 1) * 25);
     setFim(value * 25);
   };
-
   return (
     <>
       <ListBody>
@@ -37,7 +36,7 @@ const List = () => {
             if (index >= inicio - 1 && index < fim) {
               return (
                 <ListItem key={country.population}>
-                  <ImageItem src={country.flags.svg} />
+                  <ImageItem src={country.flags.png} />
                   <InfoItem>
                     <InfoTitle>{country.name.common}</InfoTitle>
                     <InfoList>
