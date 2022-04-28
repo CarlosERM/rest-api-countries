@@ -3,13 +3,15 @@ import React from 'react';
 import { BsMoonFill, BsMoon } from 'react-icons/bs';
 import { useMyContext } from '../../context';
 
-import { HeaderBody, HeaderTitle, HeaderToggle, Toggle } from './style';
+import { HeaderBody, HeaderTitle, HeaderToggle, NavLinkHeader, Toggle } from './style';
 
 const Header = () => {
   const { toggle, handleToggle } = useMyContext();
   return (
     <HeaderBody>
-      <HeaderTitle>Where in the world?</HeaderTitle>
+      <HeaderTitle>
+        <NavLinkHeader href="/">Where in the world?</NavLinkHeader>
+      </HeaderTitle>
       <HeaderToggle>
         <Toggle onClick={handleToggle}>
           {toggle ? <BsMoonFill style={{ color: 'white' }} /> : <BsMoon />}

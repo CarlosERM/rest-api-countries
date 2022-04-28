@@ -17,6 +17,7 @@ const App = () => {
       setTheme(themeLight);
     }
   }, [toggle]);
+
   return (
     <ThemeProvider theme={theme}>
       <Template />

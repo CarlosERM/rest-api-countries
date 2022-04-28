@@ -14,6 +14,13 @@ export const HeaderBody = styled.header`
 export const HeaderTitle = styled.h1`
   font-weight: 800;
   font-size: 1.0625rem;
+  &:hover {
+    transform: scale(1.04);
+  }
+`;
+export const NavLinkHeader = styled.a`
+  text-decoration: none;
+  color: inherit;
 `;
 
 export const HeaderToggle = styled.div`

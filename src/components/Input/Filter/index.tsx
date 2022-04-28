@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useMyContext } from '../../../context';
 import { FilterBody, Options, OptionsItem, WrapperFilter } from './style';
@@ -6,7 +6,12 @@ import { FilterBody, Options, OptionsItem, WrapperFilter } from './style';
 const Filter = () => {
   const [option, setOption] = useState<string | undefined>();
   const [show, setShow] = useState(false);
-  const { getCountryByFilter } = useMyContext();
+  const { getCountryByFilter, getCountries } = useMyContext();
+
+  useEffect(() => {
+    if (option != null && option !== 'All') getCountryByFilter(option.toLowerCase());
+    else getCountries();
+  }, [option]);
 
   const handleClick = useCallback(() => {
     setShow(!show);
@@ -16,12 +21,9 @@ const Filter = () => {
     (e: EventTarget & HTMLLIElement) => {
       setOption(e.dataset.filter);
       setShow(!show);
-      if (option != null) getCountryByFilter(option.toLowerCase());
     },
     [show],
   );
-
-  console.log(option);
 
   return (
     <WrapperFilter>
@@ -31,6 +33,14 @@ const Filter = () => {
       </FilterBody>
       {show && (
         <Options>
+          <OptionsItem
+            onClick={(e) => {
+              handleClickOption(e.currentTarget);
+            }}
+            data-filter="All"
+          >
+            All
+          </OptionsItem>
           <OptionsItem
             onClick={(e) => {
               handleClickOption(e.currentTarget);

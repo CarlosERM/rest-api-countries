@@ -58,6 +58,7 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
         loader,
         getCountryByFilter,
         getCountryByName,
+        getCountries,
       }}
     >
       {children}
