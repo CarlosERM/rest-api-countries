@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Header from '../components/Header';
+import MyRoutes from '../routes';
+
 const Template = () => {
   return (
     <BrowserRouter>
-      <Route path="/" element={<Home />} />
-      <Route path="/" element={<Home />} />
+      <Header />
+      <MyRoutes />
     </BrowserRouter>
   );
 };

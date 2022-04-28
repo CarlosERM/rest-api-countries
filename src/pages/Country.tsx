@@ -1,5 +1,6 @@
 import React from 'react';
+import Body from '../components/Body';
 
 export const Country = () => {
-  return <div>Country</div>;
+  return <Body>Country</Body>;
 };
