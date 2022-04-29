@@ -9,32 +9,60 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
   const [inicio, setInicio] = useState(1);
   const [fim, setFim] = useState(25);
   const [loader, setLoader] = useState(false);
+  const [error, setError] = useState(false);
+
   const handleSetCountries = useCallback((data) => {
-    setCountries(data);
+    setCountries(
+      data.sort((a: CountryType, b: CountryType) => {
+        if (a.name.common < b.name.common) {
+          return -1;
+        }
+        if (a.name.common > b.name.common) {
+          return 1;
+        }
+        return 0;
+      }),
+    );
   }, []);
 
   async function getCountries() {
-    setLoader(true);
-    const response = await getRequest('all');
-    setLoader(false);
+    try {
+      setError(false);
 
-    handleSetCountries(response);
+      setLoader(true);
+      const response = await getRequest('all');
+      handleSetCountries(response);
+      setLoader(false);
+    } catch (erro) {
+      setError(true);
+      setLoader(false);
+    }
   }
 
   async function getCountryByFilter(continent: string) {
-    setLoader(true);
-    const response = await getRequest(`region/${continent}`);
-    setLoader(false);
+    try {
+      setLoader(true);
+      const response = await getRequest(`region/${continent}`);
+      setLoader(false);
 
-    handleSetCountries(response);
+      handleSetCountries(response);
+    } catch (erro) {
+      setError(true);
+      setLoader(false);
+    }
   }
 
   async function getCountryByName(name: string) {
-    setLoader(true);
-    const response = await getRequest(`name/${name}`);
-    setLoader(false);
+    try {
+      setLoader(true);
+      const response = await getRequest(`name/${name}`);
+      setLoader(false);
 
-    handleSetCountries(response);
+      handleSetCountries(response);
+    } catch (erro) {
+      setError(true);
+      setLoader(false);
+    }
   }
 
   useEffect(() => {
@@ -59,6 +87,7 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
         getCountryByFilter,
         getCountryByName,
         getCountries,
+        error,
       }}
     >
       {children}

@@ -81,3 +81,7 @@ export const NavCountriesItem = styled.li`
     font-weight: bold;
   }
 `;
+export const ErrorMessage = styled.p`
+  font-size: 18px;
+  font-weight: 600;
+`;

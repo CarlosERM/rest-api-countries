@@ -16,6 +16,7 @@ export interface ContextProps {
   getCountryByFilter: (continent: string) => Promise<void>;
   getCountryByName: (name: string) => Promise<void>;
   getCountries: () => void;
+  error: boolean;
 }
 
 export interface CountryType {
