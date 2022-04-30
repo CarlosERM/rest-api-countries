@@ -1,11 +1,8 @@
-/* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useMyContext } from '../../context';
 import Loader from '../Loader';
 
 import {
-  // DivTeste,
-  ErrorMessage,
   ImageItem,
   InfoCategory,
   InfoCategoryInfo,
@@ -20,11 +17,8 @@ import {
 } from './style';
 
 const List = () => {
-  const { countries, inicio, setInicio, fim, setFim, loader, error } = useMyContext();
-  // eslint-disable-next-line prefer-const
-  let numbers: number[] = [1, 2, 3, 4, 5];
-
-  const [navNumbers, setNavNumbers] = useState<number[]>();
+  const { countries, inicio, setInicio, fim, setFim, loader } = useMyContext();
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const value: number = +e.currentTarget.innerHTML;
@@ -32,28 +26,13 @@ const List = () => {
     else setInicio((value - 1) * 25);
     setFim(value * 25);
   };
-
-  useEffect(() => {
-    if (countries) {
-      const size = countries.length / 25;
-      numbers = [];
-      for (let i = 1; i <= size; i += 1) {
-        numbers.push(i);
-      }
-
-      setNavNumbers(numbers);
-    }
-  }, [countries]);
-
   return (
     <>
       <ListBody>
         {loader ? (
           <Loader />
-        ) : error ? (
-          <ErrorMessage> No country found.</ErrorMessage>
         ) : (
-          countries?.sort().map((country, index) => {
+          countries?.map((country, index) => {
             if (index >= inicio - 1 && index < fim) {
               return (
                 <ListItem key={country.population}>
@@ -89,7 +68,7 @@ const List = () => {
         )}
       </ListBody>
       <NavCountries>
-        {navNumbers?.map((numb) => {
+        {numbers.map((numb) => {
           return (
             <NavCountriesItem onClick={handleClick} key={numb}>
               {numb}
