@@ -19,4 +19,5 @@ export const CustomLoader = styled.div`
   height: 5rem;
   animation: ${rotate} 2s linear infinite;
   margin: 0rem auto 2.5rem auto;
+  grid-column: span 4;
 `;

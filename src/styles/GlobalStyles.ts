@@ -66,4 +66,11 @@ export const GlobalStyle = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    #search {
+      position: 'absolute';
+      top: '50%';
+      left: '2.3rem';
+      font-size: '1.5625rem';
+      transform: 'translateY(-150%)';
+    }
 `;

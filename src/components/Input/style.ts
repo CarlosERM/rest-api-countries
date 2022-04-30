@@ -28,4 +28,17 @@ export const BodyInput = styled.input`
       return theme.color.inputText;
     }};
   }
+  @media (min-width: 50rem) {
+    width: 33vw;
+    padding: 1.25rem 2.5rem 1.25rem 4.75rem;
+    font-size: 0.875rem;
+    font-weight: 300;
+  }
+`;
+
+export const NavCustom = styled.nav`
+  @media (min-width: 50rem) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;

@@ -41,6 +41,8 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
 
   async function getCountryByFilter(continent: string) {
     try {
+      setError(false);
+
       setLoader(true);
       const response = await getRequest(`region/${continent}`);
       setLoader(false);
@@ -54,6 +56,8 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
 
   async function getCountryByName(name: string) {
     try {
+      setError(false);
+
       setLoader(true);
       const response = await getRequest(`name/${name}`);
       setLoader(false);

@@ -14,12 +14,18 @@ export const FilterBody = styled.div`
   border-radius: 0.3125rem;
   cursor: pointer;
   font-size: 0.9375rem;
+  @media (min-width: 50rem) {
+    width: 22vw;
+  }
+  @media (min-width: 81.25rem) {
+    width: 13.88vw;
+  }
 `;
 
 export const Options = styled.ul`
   position: absolute;
   margin-top: 0.3125rem;
-  padding: 1.5rem 1.875rem 25px 1.875rem;
+  padding: 1.5rem 1.875rem 1.5625rem 1.875rem;
   background-color: ${({ theme }) => {
     return theme.color.input;
   }};
@@ -46,4 +52,7 @@ export const OptionsItem = styled.li`
 export const WrapperFilter = styled.div`
   width: 58.5%;
   position: relative;
+  @media (min-width: 50rem) {
+    width: auto;
+  }
 `;

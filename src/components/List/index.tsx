@@ -4,6 +4,7 @@ import { useMyContext } from '../../context';
 import Loader from '../Loader';
 
 import {
+  // DivTeste,
   ErrorMessage,
   ImageItem,
   InfoCategory,
