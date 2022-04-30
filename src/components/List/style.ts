@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const ListBody = styled.ul`
   margin-top: 2.5rem;
@@ -18,15 +18,21 @@ export const ListBody = styled.ul`
   }
   @media (min-width: 68.75rem) {
     grid-template-columns: repeat(3, minmax(11.875rem, 16.5625rem));
-    /* column-gap: 4.6875rem; */
   }
   @media (min-width: 81.25rem) {
     grid-template-columns: repeat(4, minmax(11.875rem, 16.5625rem));
-    /* column-gap: 4.6875rem; */
   } ;
 `;
 
+export const fadeIn = keyframes`
+from {
+  opacity:0;
+} to {
+  opacity:1;
+}
+`;
 export const ListItem = styled.li`
+  animation: ${fadeIn} 0.3s linear;
   border-radius: 0.25rem;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   background-color: ${({ theme }) => {
@@ -88,7 +94,7 @@ export const InfoCategoryInfo = styled.span`
   font-weight: 600;
   font-size: 1.0313rem;
   @media (min-width: 50rem) {
-    font-size: 14px;
+    font-size: 0.875rem;
     letter-spacing: 0.0625rem;
   }
 `;
@@ -109,18 +115,20 @@ export const NavCountriesItem = styled.li`
   }
 `;
 export const ErrorMessage = styled.p`
-  font-size: 1.125rem;
+  font-size: 1.25rem;
+  margin: 1.25rem auto;
+  grid-column: span 4;
   font-weight: 600;
 `;
-interface IDivTeste {
-  image: string;
-}
-export const DivTeste = styled.div<IDivTeste>`
-  background: url(${(props) => props.image}) no-repeat center;
-  background-size: cover;
-  height: 12.5rem;
-  border-radius: 0.25rem 0.25rem 0rem 0rem;
-  @media (min-width: 50rem) {
-    height: 10rem;
-  }
-`;
+// interface IDivTeste {
+//   image: string;
+// }
+// export const DivTeste = styled.div<IDivTeste>`
+//   background: url(${(props) => props.image}) no-repeat center;
+//   background-size: cover;
+//   height: 12.5rem;
+//   border-radius: 0.25rem 0.25rem 0rem 0rem;
+//   @media (min-width: 50rem) {
+//     height: 10rem;
+//   }
+// `;

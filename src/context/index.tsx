@@ -6,8 +6,8 @@ const myContext = React.createContext({} as ContextProps);
 export const ContextProvider = ({ children }: ContextProviderProp) => {
   const [toggle, setToggle] = useState(false);
   const [countries, setCountries] = useState<CountryType[] | null>();
-  const [inicio, setInicio] = useState(1);
-  const [fim, setFim] = useState(25);
+  const [inicio, setInicio] = useState(0);
+  const [fim, setFim] = useState(24);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
   const [option, setOption] = useState<string | undefined>();
@@ -35,6 +35,8 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
       const response = await getRequest('all');
       handleSetCountries(response);
       setLoader(false);
+      setInicio(0);
+      setFim(24);
     } catch (erro) {
       setError(true);
       setLoader(false);
@@ -48,6 +50,8 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
       setLoader(true);
       const response = await getRequest(`region/${continent}`);
       setLoader(false);
+      setInicio(0);
+      setFim(24);
 
       handleSetCountries(response);
     } catch (erro) {
@@ -65,6 +69,8 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
       setLoader(false);
 
       handleSetCountries(response);
+      setInicio(0);
+      setFim(24);
     } catch (erro) {
       setError(true);
       setLoader(false);

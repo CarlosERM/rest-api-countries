@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useMyContext } from '../../context';
 import Loader from '../Loader';
 
@@ -20,85 +21,109 @@ import {
 } from './style';
 
 const List = () => {
-  const { countries, inicio, setInicio, fim, setFim, loader, error } = useMyContext();
+  // eslint-disable-next-line operator-linebreak
+  const { countries, inicio, setInicio, fim, setFim, loader, error, getCountryByName } =
+    useMyContext();
   // eslint-disable-next-line prefer-const
   let numbers: number[] = [1, 2, 3, 4, 5];
 
   const [navNumbers, setNavNumbers] = useState<number[]>();
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
-  console.log(internationalNumberFormat.format(123123));
-
-  const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const value: number = +e.currentTarget.innerHTML;
-    if (value !== 1) setInicio((value - 1) * 25 + 1);
-    else setInicio((value - 1) * 25);
-    setFim(value * 25);
-  };
 
   useEffect(() => {
     if (countries) {
-      const size = countries.length / 25;
+      const size = Math.ceil(countries.length / 24);
       numbers = [];
       for (let i = 1; i <= size; i += 1) {
         numbers.push(i);
       }
-
       setNavNumbers(numbers);
     }
   }, [countries]);
-  if (countries) console.log(countries[0].population);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const value: number = +e.currentTarget.innerHTML;
+    if (value !== 1) {
+      setInicio((value - 1) * 24);
+    } else {
+      setInicio(0);
+    }
+    setFim(value * 24);
+    scrollToTop();
+  };
+
+  const handleClickCountry = (country: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    if (country.currentTarget.dataset.name) getCountryByName(country.currentTarget.dataset.name);
+  };
   return (
     <>
       <ListBody>
         {loader ? (
           <Loader />
         ) : error ? (
-          <ErrorMessage> No country found.</ErrorMessage>
+          <ErrorMessage>No country found.</ErrorMessage>
         ) : (
           countries?.sort().map((country, index) => {
-            if (index >= inicio - 1 && index < fim) {
+            if (index >= inicio && index < fim) {
               return (
-                <ListItem key={country.population}>
-                  <ImageItem src={country.flags.png} />
-                  <InfoItem>
-                    <InfoTitle>{country.name.common}</InfoTitle>
-                    <InfoList>
-                      <InfoListItem>
-                        <InfoCategory>
-                          <InfoCategoryInfo>Population:</InfoCategoryInfo>
-                          {` ${internationalNumberFormat.format(country.population)}`}
-                        </InfoCategory>
-                      </InfoListItem>
-                      <InfoListItem>
-                        <InfoCategory>
-                          <InfoCategoryInfo>Region:</InfoCategoryInfo>
-                          {` ${country.continents}`}
-                        </InfoCategory>
-                      </InfoListItem>
-                      <InfoListItem>
-                        <InfoCategory>
-                          <InfoCategoryInfo>Capital:</InfoCategoryInfo>
-                          {` ${country.capital}`}
-                        </InfoCategory>
-                      </InfoListItem>
-                    </InfoList>
-                  </InfoItem>
-                </ListItem>
+                <NavLink
+                  to="/country"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  key={country.name.common}
+                >
+                  <ListItem onClick={handleClickCountry} data-name={country.name.common}>
+                    <ImageItem src={country.flags.png} />
+                    <InfoItem>
+                      <InfoTitle>{country.name.common}</InfoTitle>
+                      <InfoList>
+                        <InfoListItem>
+                          <InfoCategory>
+                            <InfoCategoryInfo>Population:</InfoCategoryInfo>
+                            {` ${internationalNumberFormat.format(country.population)}`}
+                          </InfoCategory>
+                        </InfoListItem>
+                        <InfoListItem>
+                          <InfoCategory>
+                            <InfoCategoryInfo>Region:</InfoCategoryInfo>
+                            {` ${country.continents}`}
+                          </InfoCategory>
+                        </InfoListItem>
+                        <InfoListItem>
+                          <InfoCategory>
+                            <InfoCategoryInfo>Capital:</InfoCategoryInfo>
+                            {` ${country.capital}`}
+                          </InfoCategory>
+                        </InfoListItem>
+                      </InfoList>
+                    </InfoItem>
+                  </ListItem>
+                </NavLink>
               );
             }
             return null;
           })
         )}
       </ListBody>
-      <NavCountries>
-        {navNumbers?.map((numb) => {
-          return (
-            <NavCountriesItem onClick={handleClick} key={numb}>
-              {numb}
-            </NavCountriesItem>
-          );
-        })}
-      </NavCountries>
+      {loader || error ? (
+        <NavCountries />
+      ) : (
+        <NavCountries>
+          {navNumbers?.map((numb) => {
+            return (
+              <NavCountriesItem onClick={handleClick} key={numb}>
+                {numb}
+              </NavCountriesItem>
+            );
+          })}
+        </NavCountries>
+      )}
     </>
   );
 };

@@ -39,7 +39,10 @@ export interface CountryType {
     svg: string;
   };
   continents: string[];
-  currencies: object;
+  currencies: {
+    EUR: { name: 'Euro'; symbol: '€' };
+  };
+
   demonyms: object;
   fifa: string;
   flag: string;
@@ -57,7 +60,12 @@ export interface CountryType {
   name: {
     common: string;
     official: string;
-    nativeName: object;
+    nativeName: {
+      sqi: {
+        common: string;
+        official: string;
+      };
+    };
   };
   population: number;
   postalCode: { format: string; regex: string };

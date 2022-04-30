@@ -34,8 +34,11 @@ export const Options = styled.ul`
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   border-radius: 0.3125rem;
   width: 100%;
+  transition: 0.5s background-color linear;
 `;
 export const OptionsItem = styled.li`
+  transition: 0.5s background-color linear;
+
   background-color: ${({ theme }) => {
     return theme.color.input;
   }};
