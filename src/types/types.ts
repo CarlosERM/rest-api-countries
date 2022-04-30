@@ -17,6 +17,10 @@ export interface ContextProps {
   getCountryByName: (name: string) => Promise<void>;
   getCountries: () => void;
   error: boolean;
+  option: string | undefined;
+  setOption: React.Dispatch<SetStateAction<string | undefined>>;
+  country: string;
+  setCountry: React.Dispatch<SetStateAction<string>>;
 }
 
 export interface CountryType {

@@ -4,9 +4,12 @@ import { useMyContext } from '../../../context';
 import { FilterBody, Options, OptionsItem, WrapperFilter } from './style';
 
 const Filter = () => {
-  const [option, setOption] = useState<string | undefined>();
   const [show, setShow] = useState(false);
-  const { getCountryByFilter, getCountries } = useMyContext();
+  const { getCountryByFilter, getCountries, option, setOption, country } = useMyContext();
+
+  useEffect(() => {
+    setOption(undefined);
+  }, [country]);
 
   useEffect(() => {
     if (option != null && option !== 'All') getCountryByFilter(option.toLowerCase());

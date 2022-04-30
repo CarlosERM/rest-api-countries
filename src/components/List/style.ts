@@ -48,20 +48,30 @@ export const ImageItem = styled.img`
   width: 100%;
   height: 12.5rem;
   @media (min-width: 50rem) {
-    height: 47.61%;
+    height: 10rem;
   }
 `;
 export const InfoItem = styled.div`
   padding: 1.875rem;
+  @media (min-width: 50rem) {
+    padding: 1.625rem 1.5rem;
+  }
 `;
 export const InfoTitle = styled.h2`
-  font-weight: 600;
+  font-weight: 800;
   margin-bottom: 1.875rem;
   font-size: 1.4375rem;
+  @media (min-width: 50rem) {
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+  }
 `;
 
 export const InfoList = styled.ul`
   margin-bottom: 1.625rem;
+  @media (min-width: 50rem) {
+    margin-bottom: 0;
+  }
 `;
 
 export const InfoListItem = styled.li`
@@ -70,10 +80,17 @@ export const InfoListItem = styled.li`
 export const InfoCategory = styled.p`
   font-weight: 300;
   font-size: 1rem;
+  @media (min-width: 50rem) {
+    font-size: 0.875rem;
+  }
 `;
 export const InfoCategoryInfo = styled.span`
   font-weight: 600;
   font-size: 1.0313rem;
+  @media (min-width: 50rem) {
+    font-size: 14px;
+    letter-spacing: 0.0625rem;
+  }
 `;
 
 export const NavCountries = styled.ul`

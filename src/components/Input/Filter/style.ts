@@ -16,6 +16,8 @@ export const FilterBody = styled.div`
   font-size: 0.9375rem;
   @media (min-width: 50rem) {
     width: 22vw;
+    padding: 1.25rem 0.9375rem 1.25rem 1.5rem;
+    font-size: 0.875rem;
   }
   @media (min-width: 81.25rem) {
     width: 13.88vw;

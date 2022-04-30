@@ -25,6 +25,8 @@ const List = () => {
   let numbers: number[] = [1, 2, 3, 4, 5];
 
   const [navNumbers, setNavNumbers] = useState<number[]>();
+  const internationalNumberFormat = new Intl.NumberFormat('en-US');
+  console.log(internationalNumberFormat.format(123123));
 
   const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const value: number = +e.currentTarget.innerHTML;
@@ -44,7 +46,7 @@ const List = () => {
       setNavNumbers(numbers);
     }
   }, [countries]);
-
+  if (countries) console.log(countries[0].population);
   return (
     <>
       <ListBody>
@@ -64,7 +66,7 @@ const List = () => {
                       <InfoListItem>
                         <InfoCategory>
                           <InfoCategoryInfo>Population:</InfoCategoryInfo>
-                          {` ${country.population}`}
+                          {` ${internationalNumberFormat.format(country.population)}`}
                         </InfoCategory>
                       </InfoListItem>
                       <InfoListItem>

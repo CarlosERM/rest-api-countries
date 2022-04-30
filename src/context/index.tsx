@@ -10,6 +10,8 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
   const [fim, setFim] = useState(25);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [option, setOption] = useState<string | undefined>();
+  const [country, setCountry] = useState('');
 
   const handleSetCountries = useCallback((data) => {
     setCountries(
@@ -92,6 +94,10 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
         getCountryByName,
         getCountries,
         error,
+        option,
+        setOption,
+        country,
+        setCountry,
       }}
     >
       {children}

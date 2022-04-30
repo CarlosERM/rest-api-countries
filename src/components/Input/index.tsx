@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/button-has-type */
+import React, { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useMyContext } from '../../context';
 
-import { BodyInput, BoxInput } from './style';
+import { BodyInput, BoxInput, SearchButton } from './style';
 
 const Input = () => {
-  const { getCountryByName, getCountries } = useMyContext();
-
-  const [country, setCountry] = useState('');
-
-  const mediaMatch = window.matchMedia('(min-width: 50rem)');
-  const [matches, setMatches] = useState(mediaMatch.matches);
+  const { getCountryByName, getCountries, country, setCountry, option } = useMyContext();
 
   useEffect(() => {
-    setMatches(matches);
-  }, [matches]);
+    setCountry('');
+  }, [option]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,22 +25,17 @@ const Input = () => {
 
   return (
     <BoxInput onSubmit={handleSubmit}>
-      <BodyInput
-        type="text"
-        placeholder="Search for a country..."
-        value={country}
-        onChange={handleChange}
-      />
-      <AiOutlineSearch
-        className="search"
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '2.3rem',
-          fontSize: '1.5625rem',
-          transform: 'translateY(-150%)',
-        }}
-      />
+      <div style={{ position: 'relative' }}>
+        <BodyInput
+          type="text"
+          placeholder="Search for a country..."
+          value={country}
+          onChange={handleChange}
+        />
+        <SearchButton>
+          <AiOutlineSearch className="search" />
+        </SearchButton>
+      </div>
     </BoxInput>
   );
 };
