@@ -8,7 +8,6 @@ const CountryPage = () => {
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
 
   if (countries) {
-    console.log(countries[0]);
     return (
       <>
         <CountryImage src={countries[0].flags.svg} />
@@ -17,9 +16,6 @@ const CountryPage = () => {
           <InfoListItem>
             <InfoCategory>
               <InfoCategoryInfo>Native name:</InfoCategoryInfo>
-              {/* {countries[0].name.nativeName.sqi.common
-                ? `  ${countries[0].name.nativeName.sqi.common}`
-                : 'fodase'} */}
             </InfoCategory>
           </InfoListItem>
           <InfoListItem>
@@ -58,7 +54,6 @@ const CountryPage = () => {
           <InfoListItem>
             <InfoCategory>
               <InfoCategoryInfo>Currencies:</InfoCategoryInfo>
-              {` ${countries[0].currencies.EUR.name}`}
             </InfoCategory>
           </InfoListItem>
           <InfoListItem>
@@ -71,12 +66,6 @@ const CountryPage = () => {
             <InfoCategory>
               <InfoCategoryInfo>Sub Region:</InfoCategoryInfo>
               {` ${countries[0].subregion}`}
-            </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
-            <InfoCategory>
-              <InfoCategoryInfo>Capital:</InfoCategoryInfo>
-              {` ${countries[0].capital}`}
             </InfoCategory>
           </InfoListItem>
         </InfoList>

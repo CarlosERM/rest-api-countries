@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <HeaderBody>
       <HeaderTitle>
-        <NavLinkHeader href="/rest-api-countries">Where in the world?</NavLinkHeader>
+        <NavLinkHeader href="/">Where in the world?</NavLinkHeader>
       </HeaderTitle>
       <HeaderToggle>
         <Toggle onClick={handleToggle}>
