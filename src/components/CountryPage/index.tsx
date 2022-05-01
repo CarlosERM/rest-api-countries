@@ -8,6 +8,8 @@ const CountryPage = () => {
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
 
   if (countries) {
+    console.log(countries[0]);
+
     return (
       <>
         <CountryImage src={countries[0].flags.svg} />
@@ -16,6 +18,7 @@ const CountryPage = () => {
           <InfoListItem>
             <InfoCategory>
               <InfoCategoryInfo>Native name:</InfoCategoryInfo>
+              {` ${countries[0].altSpellings[1]}`}
             </InfoCategory>
           </InfoListItem>
           <InfoListItem>
@@ -59,7 +62,6 @@ const CountryPage = () => {
           <InfoListItem>
             <InfoCategory>
               <InfoCategoryInfo>Languages:</InfoCategoryInfo>
-              {` ${countries[0].languages}`}
             </InfoCategory>
           </InfoListItem>
           <InfoListItem>

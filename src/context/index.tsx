@@ -1,6 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { getRequest } from '../api';
-import { ContextProps, ContextProviderProp, CountryType } from '../types/types';
+import { ContextProps } from '../types/ContextProps';
+import { CountryType } from '../types/CountryType';
+
+export interface ContextProviderProp {
+  children: React.ReactNode;
+}
 
 const myContext = React.createContext({} as ContextProps);
 export const ContextProvider = ({ children }: ContextProviderProp) => {

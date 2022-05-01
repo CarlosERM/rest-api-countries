@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Body from '../components/Body';
 import Input from '../components/Input';
 import Filter from '../components/Input/Filter';
@@ -13,6 +14,7 @@ export const Home = () => {
         <Filter />
       </NavCustom>
       <List />
+      <Outlet />
     </Body>
   );
 };
