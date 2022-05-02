@@ -7,7 +7,7 @@ const MyRoutes = () => {
   return (
     <Routes>
       <Route path="rest-api-countries" element={<Home />} />
-      <Route path="country/:name" element={<Country />} />
+      <Route path="country/:countryname" element={<Country />} />
     </Routes>
   );
 };

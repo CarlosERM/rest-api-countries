@@ -69,7 +69,7 @@ const List = () => {
             if (index >= inicio && index < fim) {
               return (
                 <NavLink
-                  to={`/country/${country.name.common}`}
+                  to={`/country/${country.name.common.toLowerCase()}`}
                   style={{ textDecoration: 'none', color: 'inherit' }}
                   key={country.name.common}
                 >
@@ -78,24 +78,30 @@ const List = () => {
                     <InfoItem>
                       {country.name.common && <InfoTitle>{country.name.common}</InfoTitle>}
                       <InfoList>
-                        <InfoListItem>
-                          <InfoCategory>
-                            <InfoCategoryInfo>Population:</InfoCategoryInfo>
-                            {` ${internationalNumberFormat.format(country.population)}`}
-                          </InfoCategory>
-                        </InfoListItem>
-                        <InfoListItem>
-                          <InfoCategory>
-                            <InfoCategoryInfo>Region:</InfoCategoryInfo>
-                            {` ${country.continents}`}
-                          </InfoCategory>
-                        </InfoListItem>
-                        <InfoListItem>
-                          <InfoCategory>
-                            <InfoCategoryInfo>Capital:</InfoCategoryInfo>
-                            {` ${country.capital}`}
-                          </InfoCategory>
-                        </InfoListItem>
+                        {country.population && (
+                          <InfoListItem>
+                            <InfoCategory>
+                              <InfoCategoryInfo>Population:</InfoCategoryInfo>
+                              {` ${internationalNumberFormat.format(country.population)}`}
+                            </InfoCategory>
+                          </InfoListItem>
+                        )}
+                        {country.continents && (
+                          <InfoListItem>
+                            <InfoCategory>
+                              <InfoCategoryInfo>Region:</InfoCategoryInfo>
+                              {` ${country.continents}`}
+                            </InfoCategory>
+                          </InfoListItem>
+                        )}
+                        {country.capital && (
+                          <InfoListItem>
+                            <InfoCategory>
+                              <InfoCategoryInfo>Capital:</InfoCategoryInfo>
+                              {` ${country.capital}`}
+                            </InfoCategory>
+                          </InfoListItem>
+                        )}
                       </InfoList>
                     </InfoItem>
                   </ListItem>

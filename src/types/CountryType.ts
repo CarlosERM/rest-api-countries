@@ -31,4 +31,8 @@ export interface CountryType {
   timezones: string[];
   tld: string[];
   cca2: string;
+  maps: {
+    googleMaps: string;
+    openStreetMaps: string;
+  };
 }

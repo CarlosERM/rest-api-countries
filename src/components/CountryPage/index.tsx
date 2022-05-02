@@ -2,79 +2,127 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMyContext } from '../../context';
 import { ErrorMessage, InfoCategory, InfoCategoryInfo, InfoList } from '../List/style';
-import { Border, BorderBox, BorderName, CountryCategory, CountryImage, CountryName } from './style';
+import Loader from '../Loader';
+import {
+  NavButtons,
+  BorderBox,
+  BorderName,
+  CountryCategory,
+  CountryImage,
+  CountryName,
+  MapLink,
+  GridCountry,
+  FlexCountry,
+} from './style';
 
 const CountryPage = () => {
-  const { countries, getCountryByName } = useMyContext();
+  const { countries, getCountryByName, loader } = useMyContext();
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
-  const { name } = useParams();
+  const { countryname } = useParams();
 
   useEffect(() => {
-    if (name !== undefined) getCountryByName(`/alpha/${name}`);
+    if (countryname !== undefined) getCountryByName(countryname);
   }, []);
 
   if (countries) {
+    const {
+      flags,
+      name,
+      altSpellings,
+      population,
+      continents,
+      subregion,
+      capital,
+      tld,
+      maps,
+      borders,
+    } = countries[0];
+
+    if (loader) {
+      return <Loader />;
+    }
     return (
-      <>
-        <CountryImage src={countries[0].flags.svg} />
-        <CountryName>{countries[0].name.common}</CountryName>
-        <InfoList>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Native Name:</InfoCategoryInfo>
-              {` ${countries[0].altSpellings[1]}`}
-            </InfoCategory>
-          </CountryCategory>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Population:</InfoCategoryInfo>
-              {` ${internationalNumberFormat.format(countries[0].population)}`}
-            </InfoCategory>
-          </CountryCategory>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Region:</InfoCategoryInfo>
-              {` ${countries[0].continents}`}
-            </InfoCategory>
-          </CountryCategory>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Sub Region:</InfoCategoryInfo>
-              {` ${countries[0].subregion}`}
-            </InfoCategory>
-          </CountryCategory>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Capital:</InfoCategoryInfo>
-              {` ${countries[0].capital}`}
-            </InfoCategory>
-          </CountryCategory>
-        </InfoList>
-        <InfoList>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Top Level Domain:</InfoCategoryInfo>
-              {`  ${countries[0].tld}`}
-            </InfoCategory>
-          </CountryCategory>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Currencies:</InfoCategoryInfo>
-            </InfoCategory>
-          </CountryCategory>
-          <CountryCategory>
-            <InfoCategory>
-              <InfoCategoryInfo>Languages:</InfoCategoryInfo>
-            </InfoCategory>
-          </CountryCategory>
-        </InfoList>
-        <BorderName>Border Countries:</BorderName>
-        <BorderBox>
-          {countries[0].borders.map((border) => {
-            return <Border key={border}>{border}</Border>;
-          })}
-        </BorderBox>
-      </>
+      <GridCountry>
+        {flags.svg && <CountryImage src={flags.svg} />}
+        <FlexCountry>
+          <div>
+            {name && <CountryName>{name.common}</CountryName>}
+            <InfoList>
+              {altSpellings && (
+                <CountryCategory>
+                  <InfoCategory>
+                    <InfoCategoryInfo>Native Name: </InfoCategoryInfo>
+                    {altSpellings[1]}
+                  </InfoCategory>
+                </CountryCategory>
+              )}
+              {population && (
+                <CountryCategory>
+                  <InfoCategory>
+                    <InfoCategoryInfo>Population: </InfoCategoryInfo>
+                    {internationalNumberFormat.format(population)}
+                  </InfoCategory>
+                </CountryCategory>
+              )}
+              {continents && (
+                <CountryCategory>
+                  <InfoCategory>
+                    <InfoCategoryInfo>Region: </InfoCategoryInfo>
+                    {continents}
+                  </InfoCategory>
+                </CountryCategory>
+              )}
+              {subregion && (
+                <CountryCategory>
+                  <InfoCategory>
+                    <InfoCategoryInfo>Sub Region: </InfoCategoryInfo>
+                    {subregion}
+                  </InfoCategory>
+                </CountryCategory>
+              )}
+              {capital && (
+                <CountryCategory>
+                  <InfoCategory>
+                    <InfoCategoryInfo>Capital: </InfoCategoryInfo>
+                    {capital}
+                  </InfoCategory>
+                </CountryCategory>
+              )}
+              {tld && (
+                <CountryCategory>
+                  <InfoCategory>
+                    <InfoCategoryInfo>Top Level Domain: </InfoCategoryInfo>
+                    {tld}
+                  </InfoCategory>
+                </CountryCategory>
+              )}
+            </InfoList>
+          </div>
+          <div>
+            <BorderName>Maps:</BorderName>
+            {maps && (
+              <BorderBox>
+                <MapLink href={maps.googleMaps} target="_blank" rel="noopener noreferrer">
+                  <NavButtons>Google Maps</NavButtons>
+                </MapLink>
+                <MapLink href={maps.openStreetMaps} target="_blank" rel="noopener noreferrer">
+                  <NavButtons>Open Street Maps</NavButtons>
+                </MapLink>
+              </BorderBox>
+            )}
+            {borders && (
+              <>
+                <BorderName>Border Countries:</BorderName>
+                <BorderBox>
+                  {borders.map((border1) => {
+                    return <NavButtons key={border1.toLowerCase()}>{border1}</NavButtons>;
+                  })}
+                </BorderBox>
+              </>
+            )}
+          </div>
+        </FlexCountry>
+      </GridCountry>
     );
   }
   return <ErrorMessage>No country found</ErrorMessage>;

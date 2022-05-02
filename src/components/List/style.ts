@@ -32,7 +32,7 @@ from {
 }
 `;
 export const ListItem = styled.li`
-  animation: ${fadeIn} 0.3s linear;
+  animation: ${fadeIn} 1s linear;
   border-radius: 0.25rem;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   background-color: ${({ theme }) => {

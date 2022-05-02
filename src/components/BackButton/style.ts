@@ -8,7 +8,7 @@ export const CustomBackButton = styled.button`
     return theme.color.text;
   }};
   border: none;
-  padding: 8px 30px;
+  padding: 0.5rem 1.875rem;
   font-size: 1.0625rem;
   font-family: inherit;
   display: flex;
