@@ -22,14 +22,12 @@ import {
 
 const List = () => {
   // eslint-disable-next-line operator-linebreak
-  const { countries, inicio, setInicio, fim, setFim, loader, error, getCountryByName } =
-    useMyContext();
+  const { countries, inicio, setInicio, fim, setFim, loader, error } = useMyContext();
   // eslint-disable-next-line prefer-const
-  let numbers: number[] = [1, 2, 3, 4, 5];
+  let numbers: number[] = [1];
 
   const [navNumbers, setNavNumbers] = useState<number[]>();
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
-
   useEffect(() => {
     if (countries) {
       const size = Math.ceil(countries.length / 24);
@@ -59,9 +57,6 @@ const List = () => {
     scrollToTop();
   };
 
-  const handleClickCountry = (country: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    if (country.currentTarget.dataset.name) getCountryByName(country.currentTarget.dataset.name);
-  };
   return (
     <>
       <ListBody>
@@ -74,14 +69,14 @@ const List = () => {
             if (index >= inicio && index < fim) {
               return (
                 <NavLink
-                  to="/country"
+                  to={`/country/${country.name.common}`}
                   style={{ textDecoration: 'none', color: 'inherit' }}
                   key={country.name.common}
                 >
-                  <ListItem onClick={handleClickCountry} data-name={country.name.common}>
+                  <ListItem data-name={country.name.common}>
                     <ImageItem src={country.flags.png} />
                     <InfoItem>
-                      <InfoTitle>{country.name.common}</InfoTitle>
+                      {country.name.common && <InfoTitle>{country.name.common}</InfoTitle>}
                       <InfoList>
                         <InfoListItem>
                           <InfoCategory>

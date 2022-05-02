@@ -30,4 +30,5 @@ export interface CountryType {
   subregion: string;
   timezones: string[];
   tld: string[];
+  cca2: string;
 }

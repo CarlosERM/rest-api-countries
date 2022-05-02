@@ -1,76 +1,74 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useMyContext } from '../../context';
-import { InfoCategory, InfoCategoryInfo, InfoList, InfoListItem, InfoTitle } from '../List/style';
-import { Border, BorderBox, BorderName, CountryImage } from './style';
+import { ErrorMessage, InfoCategory, InfoCategoryInfo, InfoList } from '../List/style';
+import { Border, BorderBox, BorderName, CountryCategory, CountryImage, CountryName } from './style';
 
 const CountryPage = () => {
-  const { countries } = useMyContext();
+  const { countries, getCountryByName } = useMyContext();
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
+  const { name } = useParams();
+
+  useEffect(() => {
+    if (name !== undefined) getCountryByName(`/alpha/${name}`);
+  }, []);
 
   if (countries) {
-    console.log(countries[0]);
     return (
       <>
         <CountryImage src={countries[0].flags.svg} />
-        <InfoTitle>{countries[0].name.common}</InfoTitle>
+        <CountryName>{countries[0].name.common}</CountryName>
         <InfoList>
-          <InfoListItem>
+          <CountryCategory>
             <InfoCategory>
-              <InfoCategoryInfo>Native name:</InfoCategoryInfo>
+              <InfoCategoryInfo>Native Name:</InfoCategoryInfo>
               {` ${countries[0].altSpellings[1]}`}
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
+          </CountryCategory>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Population:</InfoCategoryInfo>
               {` ${internationalNumberFormat.format(countries[0].population)}`}
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
+          </CountryCategory>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Region:</InfoCategoryInfo>
               {` ${countries[0].continents}`}
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
+          </CountryCategory>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Sub Region:</InfoCategoryInfo>
               {` ${countries[0].subregion}`}
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
+          </CountryCategory>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Capital:</InfoCategoryInfo>
               {` ${countries[0].capital}`}
             </InfoCategory>
-          </InfoListItem>
+          </CountryCategory>
         </InfoList>
-        {/* dsdasd */}
         <InfoList>
-          <InfoListItem>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Top Level Domain:</InfoCategoryInfo>
               {`  ${countries[0].tld}`}
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
+          </CountryCategory>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Currencies:</InfoCategoryInfo>
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
+          </CountryCategory>
+          <CountryCategory>
             <InfoCategory>
               <InfoCategoryInfo>Languages:</InfoCategoryInfo>
             </InfoCategory>
-          </InfoListItem>
-          <InfoListItem>
-            <InfoCategory>
-              <InfoCategoryInfo>Sub Region:</InfoCategoryInfo>
-              {` ${countries[0].subregion}`}
-            </InfoCategory>
-          </InfoListItem>
+          </CountryCategory>
         </InfoList>
-        <BorderName>Border Countries</BorderName>
+        <BorderName>Border Countries:</BorderName>
         <BorderBox>
           {countries[0].borders.map((border) => {
             return <Border key={border}>{border}</Border>;
@@ -79,7 +77,6 @@ const CountryPage = () => {
       </>
     );
   }
-  return <p> Country not found</p>;
+  return <ErrorMessage>No country found</ErrorMessage>;
 };
-
 export default CountryPage;

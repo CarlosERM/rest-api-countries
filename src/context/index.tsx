@@ -9,7 +9,7 @@ export interface ContextProviderProp {
 
 const myContext = React.createContext({} as ContextProps);
 export const ContextProvider = ({ children }: ContextProviderProp) => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [countries, setCountries] = useState<CountryType[] | null>();
   const [inicio, setInicio] = useState(0);
   const [fim, setFim] = useState(24);
