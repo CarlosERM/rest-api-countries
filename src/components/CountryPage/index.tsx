@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMyContext } from '../../context';
 import { InfoCategory, InfoCategoryInfo, InfoList, InfoListItem, InfoTitle } from '../List/style';
-import { CountryImage } from './style';
+import { Border, BorderBox, BorderName, CountryImage } from './style';
 
 const CountryPage = () => {
   const { countries } = useMyContext();
@@ -9,7 +9,6 @@ const CountryPage = () => {
 
   if (countries) {
     console.log(countries[0]);
-
     return (
       <>
         <CountryImage src={countries[0].flags.svg} />
@@ -71,6 +70,12 @@ const CountryPage = () => {
             </InfoCategory>
           </InfoListItem>
         </InfoList>
+        <BorderName>Border Countries</BorderName>
+        <BorderBox>
+          {countries[0].borders.map((border) => {
+            return <Border key={border}>{border}</Border>;
+          })}
+        </BorderBox>
       </>
     );
   }

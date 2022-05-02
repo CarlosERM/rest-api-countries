@@ -75,8 +75,13 @@ export const InfoTitle = styled.h2`
 
 export const InfoList = styled.ul`
   margin-bottom: 1.625rem;
+
+  & + & {
+    margin-top: 50px;
+  }
+
   @media (min-width: 50rem) {
-    margin-bottom: 0;
+    margin-bottom: 0rem;
   }
 `;
 

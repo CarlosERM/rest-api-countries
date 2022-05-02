@@ -1,6 +1,6 @@
 export interface CountryType {
-  altSpellings: string[];
   borders: string[];
+  altSpellings: string[];
   capital: string[];
   capitalInfo: object;
   continents: string[];
