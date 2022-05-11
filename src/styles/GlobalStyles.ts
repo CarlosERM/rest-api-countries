@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable @typescript-eslint/indent */
 import { createGlobalStyle } from 'styled-components';
 
@@ -73,4 +74,19 @@ export const GlobalStyle = createGlobalStyle`
       font-size: '1.5625rem';
       transform: 'translateY(-150%)';
     }
+    /* width */
+::-webkit-scrollbar {
+  width: .3125rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 .3125rem black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.color.text};
+  border-radius: 5rem;
+}
 `;

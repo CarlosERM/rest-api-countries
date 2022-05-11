@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react/jsx-no-bind */
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMyContext } from '../../context';
 import { ErrorMessage, InfoCategory, InfoCategoryInfo, InfoList } from '../List/style';
@@ -19,10 +20,17 @@ const CountryPage = () => {
   const { countries, getCountryByName, loader } = useMyContext();
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
   const { countryname } = useParams();
+  const [imageLoader, setImageLoader] = useState<boolean>(false);
 
   useEffect(() => {
-    if (countryname !== undefined) getCountryByName(countryname);
+    if (countryname !== undefined) {
+      getCountryByName(countryname);
+    }
   }, []);
+
+  const handleLoad = () => {
+    setImageLoader(true);
+  };
 
   if (countries) {
     const {
@@ -39,11 +47,24 @@ const CountryPage = () => {
     } = countries[0];
 
     if (loader) {
-      return <Loader />;
+      return (
+        <GridCountry>
+          <Loader />
+        </GridCountry>
+      );
     }
     return (
       <GridCountry>
-        {flags.svg && <CountryImage src={flags.svg} />}
+        {flags.svg && (
+          <>
+            <CountryImage
+              onLoad={handleLoad}
+              src={flags.svg}
+              style={{ display: imageLoader ? 'block' : 'none' }}
+            />
+            <Loader style={!imageLoader ? 'block' : 'none'} />
+          </>
+        )}
         <FlexCountry>
           <div>
             {name && <CountryName>{name.common}</CountryName>}

@@ -77,7 +77,7 @@ export const InfoList = styled.ul`
   margin-bottom: 1.625rem;
 
   & + & {
-    margin-top: 50px;
+    margin-top: 3.125rem;
   }
 
   @media (min-width: 50rem) {

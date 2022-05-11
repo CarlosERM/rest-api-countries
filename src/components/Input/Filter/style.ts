@@ -22,6 +22,14 @@ export const FilterBody = styled.div`
   @media (min-width: 81.25rem) {
     width: 13.88vw;
   }
+  transition: all 0.1s linear;
+
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+    transition: all 0.1s linear;
+    box-shadow: 0rem 0rem 1.25rem -0.125rem rgb(0 0 0 / 41%);
+  }
 `;
 
 export const Options = styled.ul`

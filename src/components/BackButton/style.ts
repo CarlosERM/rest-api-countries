@@ -14,7 +14,7 @@ export const CustomBackButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   transition: transform 0.1s linear, background-color 0.5s linear;
   border-radius: 0.1875rem;
@@ -22,5 +22,6 @@ export const CustomBackButton = styled.button`
     box-shadow: 0rem 0rem 1.25rem -0.125rem rgb(0 0 0 / 41%);
     transform: scale(1.05);
     cursor: pointer;
+    font-weight: 600;
   }
 `;

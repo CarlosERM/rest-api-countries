@@ -6,6 +6,7 @@ export const CountryImage = styled.img`
   margin-top: 4.9375rem;
   margin-bottom: 3.75rem;
   max-width: 100%;
+  box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
 
   @media (min-width: 50rem) {
     margin-top: 0rem;
@@ -44,7 +45,7 @@ export const BorderBox = styled.div`
 
 export const NavButtons = styled(CustomBackButton)`
   font-size: 0.75rem;
-  @media (min-width: 1100px) {
+  @media (min-width: 68.75rem) {
     font-size: 1rem;
   }
 `;
@@ -86,7 +87,7 @@ export const FlexCountry = styled.div`
     gap: 2rem;
     wrap: wrap;
   }
-  @media (min-width: 1100px) {
+  @media (min-width: 68.75rem) {
     display: block;
   }
 `;
