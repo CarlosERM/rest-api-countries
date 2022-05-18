@@ -6,11 +6,7 @@ import { useMyContext } from '../../context';
 import { BodyInput, BoxInput, SearchButton } from './style';
 
 const Input = () => {
-  const { getCountryByName, getCountries, country, setCountry, option } = useMyContext();
-
-  useEffect(() => {
-    setCountry('');
-  }, [option]);
+  const { getCountryByName, getCountries, country, setCountry } = useMyContext();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,8 +15,10 @@ const Input = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.currentTarget.value);
     const name = e.currentTarget.value.split(' ')[0];
-    if (name === '') getCountries();
-    else getCountryByName(name);
+    if (name === '') {
+      getCountries();
+      console.log('oi');
+    } else getCountryByName(name);
   };
 
   return (

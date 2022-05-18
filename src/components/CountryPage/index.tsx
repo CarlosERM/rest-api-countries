@@ -46,7 +46,6 @@ const CountryPage = () => {
       maps,
       borders,
     } = countries[0];
-    console.log(countries[0]);
     if (loader) {
       return (
         <GridCountry>

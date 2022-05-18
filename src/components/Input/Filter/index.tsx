@@ -25,6 +25,7 @@ const Filter = () => {
     },
     [show],
   );
+
   const handleClick = useCallback(() => {
     setShow(!show);
   }, [show]);

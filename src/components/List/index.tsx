@@ -21,9 +21,7 @@ import {
 } from './style';
 
 const List = () => {
-  // eslint-disable-next-line operator-linebreak
   const { countries, inicio, setInicio, fim, setFim, loader, error } = useMyContext();
-  // eslint-disable-next-line prefer-const
   let numbers: number[] = [1];
 
   const [navNumbers, setNavNumbers] = useState<number[]>();
@@ -36,7 +34,6 @@ const List = () => {
         numbers.push(i);
       }
       setNavNumbers(numbers);
-      console.log('1');
     }
   }, [countries]);
 

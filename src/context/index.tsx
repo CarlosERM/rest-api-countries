@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { getRequest } from '../api';
 import { ContextProps } from '../types/ContextProps';
 import { CountryType } from '../types/CountryType';
