@@ -9,25 +9,17 @@ const axiosClient = axios.create({
 axiosClient.defaults.withCredentials = true;
 
 export function getRequest(URL: string) {
-  return axiosClient.get(`/${URL}`).then((response) => {
-    return response.data;
-  });
+  return axiosClient.get(`/${URL}`).then((response) => response.data);
 }
 
 export function postRequest(URL: string, data: object) {
-  return axiosClient.post(`/${URL}`, data).then((response) => {
-    return response;
-  });
+  return axiosClient.post(`/${URL}`, data).then((response) => response);
 }
 
 export function patchRequest(URL: string, data: object) {
-  return axiosClient.patch(`/${URL}`, data).then((response) => {
-    return response;
-  });
+  return axiosClient.patch(`/${URL}`, data).then((response) => response);
 }
 
 export function deleteRequest(URL: string) {
-  return axiosClient.delete(`/${URL}`).then((response) => {
-    return response;
-  });
+  return axiosClient.delete(`/${URL}`).then((response) => response);
 }

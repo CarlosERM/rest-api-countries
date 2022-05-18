@@ -47,6 +47,7 @@ export const ListItem = styled.li`
     transition: all 0.1s linear;
     box-shadow: 0rem 0rem 1.25rem -0.125rem rgb(0 0 0 / 41%);
   }
+  /* min-height: 330px; */
 `;
 
 export const ImageItem = styled.img`

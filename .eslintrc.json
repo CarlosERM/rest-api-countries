@@ -3,16 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-
-    "airbnb",
-    "airbnb-typescript"
-  ],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -24,28 +15,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "import/prefer-default-export": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "object-curly-newline": "off",
-    "react/function-component-definition": [
-      2,
-      {
-        "namedComponents": "arrow-function",
-        "unnamedComponents": "arrow-function"
-      }
-    ],
-    "arrow-body-style": ["error", "always"],
-    "indent": 0,
-    "react/jsx-no-constructed-context-values": "off"
-  }
+    "@typescript-eslint/strict-boolean-expressions": 0
+  },
+  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
 }

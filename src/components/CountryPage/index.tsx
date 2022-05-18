@@ -21,12 +21,13 @@ const CountryPage = () => {
   const internationalNumberFormat = new Intl.NumberFormat('en-US');
   const { countryname } = useParams();
   const [imageLoader, setImageLoader] = useState<boolean>(false);
+  // const [country, setCountry] = useState<CountryType>();
 
   useEffect(() => {
     if (countryname !== undefined) {
       getCountryByName(countryname);
     }
-  }, []);
+  }, [countryname]);
 
   const handleLoad = () => {
     setImageLoader(true);
@@ -45,7 +46,7 @@ const CountryPage = () => {
       maps,
       borders,
     } = countries[0];
-
+    console.log(countries[0]);
     if (loader) {
       return (
         <GridCountry>
@@ -55,7 +56,7 @@ const CountryPage = () => {
     }
     return (
       <GridCountry>
-        {flags.svg && (
+        {flags.svg.length > 0 && (
           <>
             <CountryImage
               onLoad={handleLoad}

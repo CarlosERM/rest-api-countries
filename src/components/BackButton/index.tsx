@@ -3,7 +3,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import { NavLink } from 'react-router-dom';
 import { CustomBackButton } from './style';
 
-export const BackButton = () => {
+const BackButton = () => {
   return (
     <NavLink to="/rest-api-countries" style={{ textDecoration: 'none', display: 'inline' }}>
       <CustomBackButton>
@@ -13,3 +13,5 @@ export const BackButton = () => {
     </NavLink>
   );
 };
+
+export default BackButton;

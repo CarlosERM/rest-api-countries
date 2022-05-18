@@ -36,6 +36,7 @@ const List = () => {
         numbers.push(i);
       }
       setNavNumbers(numbers);
+      console.log('1');
     }
   }, [countries]);
 

@@ -82,10 +82,6 @@ export const ContextProvider = ({ children }: ContextProviderProp) => {
     }
   }
 
-  useEffect(() => {
-    getCountries();
-  }, []);
-
   function handleToggle() {
     setToggle(!toggle);
   }

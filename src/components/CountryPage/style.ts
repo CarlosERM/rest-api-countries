@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { CustomBackButton } from '../BackButton/style';
 import { InfoListItem, InfoTitle } from '../List/style';
 
@@ -8,10 +8,8 @@ export const CountryImage = styled.img`
   max-width: 100%;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
 
-  @media (min-width: 50rem) {
+  @media (min-width: 800px) {
     margin-top: 0rem;
-    width: 35rem;
-    height: 25rem;
   }
   @media (min-width: 68.75rem) {
     margin-bottom: 0rem;
@@ -44,10 +42,7 @@ export const BorderBox = styled.div`
 `;
 
 export const NavButtons = styled(CustomBackButton)`
-  font-size: 0.75rem;
-  @media (min-width: 68.75rem) {
-    font-size: 1rem;
-  }
+  font-size: 16px;
 `;
 export const MapLink = styled.a`
   text-decoration: none;
@@ -65,7 +60,17 @@ export const CountryCategory = styled(InfoListItem)`
   margin-bottom: 1.4375rem;
 `;
 
+export const fadeIn = keyframes`
+from {
+  opacity:0;
+} to {
+  opacity:1;
+}
+`;
+
 export const GridCountry = styled.div`
+  animation: ${fadeIn} 1s linear;
+
   @media (min-width: 50rem) {
     margin-top: 4rem;
   }

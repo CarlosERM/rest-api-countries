@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-/* eslint-disable @typescript-eslint/indent */
 
 export const FilterBody = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1.25rem 1.5rem 1.25rem 1.875rem;
-  background-color: ${({ theme }) => {
-    return theme.color.input;
-  }};
+  background-color: ${({ theme }) => theme.color.input};
   color: inherit;
   transition: 0.5s background-color linear;
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
@@ -22,7 +19,6 @@ export const FilterBody = styled.div`
   @media (min-width: 81.25rem) {
     width: 13.88vw;
   }
-  transition: all 0.1s linear;
 
   &:hover {
     transform: scale(1.02);
@@ -36,9 +32,7 @@ export const Options = styled.ul`
   position: absolute;
   margin-top: 0.3125rem;
   padding: 1.5rem 1.875rem 1.5625rem 1.875rem;
-  background-color: ${({ theme }) => {
-    return theme.color.input;
-  }};
+  background-color: ${({ theme }) => theme.color.input};
   box-shadow: 0rem 0rem 0.9375rem -0.25rem rgb(0 0 0 / 41%);
   border-radius: 0.3125rem;
   width: 100%;
@@ -47,9 +41,7 @@ export const Options = styled.ul`
 export const OptionsItem = styled.li`
   transition: 0.5s background-color linear;
 
-  background-color: ${({ theme }) => {
-    return theme.color.input;
-  }};
+  background-color: ${({ theme }) => theme.color.input};
   margin-bottom: 0.9rem;
   cursor: pointer;
   &:last-child {
