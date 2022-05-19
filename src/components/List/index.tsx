@@ -66,7 +66,7 @@ const List = () => {
           countries?.sort().map((country, index) => {
             if (index >= inicio && index < fim) {
               return (
-                <ListItem data-name={country.name.common} role={`${country.name.common} flag.`}>
+                <ListItem data-name={country.name.common} role="flag.">
                   <NavLink
                     to={`/country/${country.name.common.toLowerCase()}`}
                     style={{ textDecoration: 'none', color: 'inherit' }}

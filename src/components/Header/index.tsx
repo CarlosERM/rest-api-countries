@@ -10,7 +10,7 @@ const Header = () => {
   const { toggle, handleToggle } = useMyContext();
   return (
     <>
-      <HeaderBody role="banner">
+      <HeaderBody>
         <HeaderTitle>
           <NavLinkHeader href="/rest-api-countries">Where in the world?</NavLinkHeader>
         </HeaderTitle>
