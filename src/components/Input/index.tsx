@@ -30,7 +30,7 @@ const Input = () => {
           value={country}
           onChange={handleChange}
         />
-        <SearchButton>
+        <SearchButton aria-label="search">
           <AiOutlineSearch className="search" />
         </SearchButton>
       </div>

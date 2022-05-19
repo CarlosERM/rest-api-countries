@@ -57,7 +57,7 @@ const List = () => {
 
   return (
     <>
-      <ListBody>
+      <ListBody role="main">
         {loader ? (
           <Loader />
         ) : error ? (
@@ -66,13 +66,13 @@ const List = () => {
           countries?.sort().map((country, index) => {
             if (index >= inicio && index < fim) {
               return (
-                <NavLink
-                  to={`/country/${country.name.common.toLowerCase()}`}
-                  style={{ textDecoration: 'none', color: 'inherit' }}
-                  key={country.name.common}
-                >
-                  <ListItem data-name={country.name.common}>
-                    <ImageItem src={country.flags.png} />
+                <ListItem data-name={country.name.common} role={`${country.name.common} flag.`}>
+                  <NavLink
+                    to={`/country/${country.name.common.toLowerCase()}`}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                    key={country.name.common}
+                  >
+                    <ImageItem src={country.flags.png} alt={`${country.name.common} flag.`} />
                     <InfoItem>
                       {country.name.common && <InfoTitle>{country.name.common}</InfoTitle>}
                       <InfoList>
@@ -102,8 +102,8 @@ const List = () => {
                         )}
                       </InfoList>
                     </InfoItem>
-                  </ListItem>
-                </NavLink>
+                  </NavLink>
+                </ListItem>
               );
             }
             return null;

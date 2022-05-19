@@ -10,12 +10,12 @@ const Header = () => {
   const { toggle, handleToggle } = useMyContext();
   return (
     <>
-      <HeaderBody>
+      <HeaderBody role="banner">
         <HeaderTitle>
           <NavLinkHeader href="/rest-api-countries">Where in the world?</NavLinkHeader>
         </HeaderTitle>
         <HeaderToggle>
-          <Toggle onClick={handleToggle}>
+          <Toggle onClick={handleToggle} aria-label="Toggle for Dark/Light mode">
             {toggle ? <BsMoonFill style={{ color: 'white' }} /> : <BsMoon />}
           </Toggle>
           <p style={{ fontSize: '0.9375rem' }}>Dark Mode</p>
