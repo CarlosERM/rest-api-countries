@@ -3,7 +3,9 @@
 **Technologies:** React, Typescript, Styled-Components, Context Api, Hooks.
 
 **Live Site:** https://carloserm.github.io/rest-api-countries/
+
 **Code:** https://github.com/CarlosERM/rest-api-countries
+
 **Front End Mentor Challenge:** [Challenge](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
 
 ## Desktop:
